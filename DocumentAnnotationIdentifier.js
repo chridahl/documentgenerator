@@ -30,7 +30,6 @@ class DocumentAnnotationIdentifier {
     var lineWidth = 0;
     for (let x = 0; x < width; x++ ) {
       var idx = (width * y + x) << 2;
-      var idx = (width * y + x) << 2;
       var red = imageBuffer[idx];
       var green = imageBuffer[idx + 1];
       var blue  = imageBuffer[idx + 2];
@@ -46,7 +45,6 @@ class DocumentAnnotationIdentifier {
     }
     if (!hasFoundStart)
       return null;
-
     return {
       line_start: lineStart,
       line_width: lineWidth
@@ -99,7 +97,6 @@ class DocumentAnnotationIdentifier {
       }
       return annotations;
     }
-
 }
 
 module.exports = DocumentAnnotationIdentifier;

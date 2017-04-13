@@ -3,6 +3,7 @@ var PNG = require('pngjs2').PNG;
 
 class DocumentImageManager {
   getImageBuffer(filename) {
+    // Return a promise with resolved data structure {buffer, width, height}.
     return new Promise((resolve, critical) => {
       fs.createReadStream(filename)
         .pipe(new PNG())
@@ -21,13 +22,10 @@ class DocumentImageManager {
     imageFile.pack()
       .pipe(fs.createWriteStream(filename))
       .on('finish', function() {
-        //resolve("Done");
-        console.log('Written!');
+        // Resolve here if we should return promise.
       });
   }
   drawBox(buffer, x, y, width, height, {r,g,b,a}, imageWidth, imageHeight) {
-    console.log(`${width}`);
-    console.log(`${height}`);
     for (let _y = 0; _y < imageHeight; _y++ ) {
       for (let _x = 0; _x < imageWidth; _x++ ) {
         var idx = (imageWidth * _y + _x) << 2;
